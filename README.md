@@ -1,6 +1,6 @@
-# Visual Question Answering API
+# VQALens
 
-This project implements a FastAPI-based service for Visual Question Answering (VQA) using the ViLT model.
+A powerful Visual Question Answering API service powered by ViLT model.
 
 ## Features
 

@@ -5,8 +5,8 @@ from PIL import Image
 import io
 
 app = FastAPI(
-    title="Visual Question Answering API",
-    description="API for answering questions about images using ViLT model",
+    title="VQALens",
+    description="Visual Question Answering API powered by ViLT model",
     version="1.0.0"
 )
 
