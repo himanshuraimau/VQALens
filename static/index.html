@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VQALens - Visual Question Answering</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>VQALens</h1>
+        <div class="upload-container">
+            <div class="image-preview">
+                <img id="preview" src="#" alt="Preview" style="display: none;">
+            </div>
+            <input type="file" id="imageInput" accept="image/*" class="file-input">
+            <label for="imageInput" class="upload-label">Choose an image</label>
+        </div>
+        
+        <div class="question-container">
+            <input type="text" id="question" placeholder="Ask a question about the image..." class="question-input">
+            <button onclick="askQuestion()" class="submit-btn">Ask</button>
+        </div>
+
+        <div class="result-container">
+            <p id="answer" class="answer"></p>
+            <p id="error" class="error"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

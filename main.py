@@ -1,5 +1,6 @@
 from model import model_pipeline
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.staticfiles import StaticFiles
 from typing import Union
 from PIL import Image
 import io
@@ -9,6 +10,9 @@ app = FastAPI(
     description="Visual Question Answering API powered by ViLT model",
     version="1.0.0"
 )
+
+# Mount the static directory
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 @app.post("/ask", 
     summary="Ask a question about an image",

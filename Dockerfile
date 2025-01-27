@@ -19,6 +19,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
+# Set the cache directory for transformers
+ENV TRANSFORMERS_CACHE=/app/.cache/huggingface
+
 WORKDIR /app
 
 # Create a non-privileged user
@@ -35,8 +38,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy the source code into the container.
 COPY . .
 
-# Set ownership to non-root user
-RUN chown -R appuser:appuser /app
+# Create cache directory and set permissions
+RUN mkdir -p /app/.cache/huggingface && \
+    chown -R appuser:appuser /app
 
 # Switch to the non-privileged user to run the application.
 USER appuser

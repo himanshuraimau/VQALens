@@ -7,6 +7,7 @@ A powerful Visual Question Answering API service powered by ViLT model.
 - REST API endpoint for VQA
 - Docker support for easy deployment
 - Based on the ViLT model fine-tuned for VQA
+- Web interface for easy testing
 
 ## Requirements
 
@@ -28,10 +29,10 @@ pip install -r req.txt
 
 2. Start the server:
 ```bash
-uvicorn main:app --reload
+uvicorn main:app --host 0.0.0.0 --port 8080
 ```
 
-The API will be available at http://localhost:8000
+The API will be available at http://localhost:8080
 
 ### Using Docker
 
@@ -40,42 +41,55 @@ The API will be available at http://localhost:8000
 docker compose up --build
 ```
 
-The API will be available at http://localhost:8000
+The API will be available at http://localhost:8080
 
 ## API Usage
 
+### Web Interface
+Visit http://localhost:8080 to use the web interface.
+
+### API Endpoints
 Send a POST request to `/ask` endpoint with:
 - `text`: Your question about the image
 - `image`: Image file upload
 
+Example using curl:
+```bash
+curl -X POST http://localhost:8080/ask \
+  -F "image=@path/to/image.jpg" \
+  -F "text=What color is the sky?"
+```
+
 Example response:
 ```json
 {
-    "answer": "yes"
+    "answer": "blue"
 }
 ```
 
 ## Docker Deployment
 
-### Cloud Deployment
-
 1. Build the image:
 ```bash
-docker build -t myapp .
+docker build -t vqalens .
 ```
 
 For different CPU architecture (e.g., Mac M1 to amd64):
 ```bash
-docker build --platform=linux/amd64 -t myapp .
+docker build --platform=linux/amd64 -t vqalens .
 ```
 
-2. Push to registry:
+2. Run the container:
 ```bash
-docker push myregistry.com/myapp
+docker run -p 8080:8080 vqalens
 ```
+
+## Environment Variables
+
+- `PORT`: Server port (default: 8080)
 
 ## References
 
-- [Docker's Python guide](https://docs.docker.com/language/python/)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [ViLT Model](https://huggingface.co/dandelin/vilt-b32-finetuned-vqa)
+- [Docker Documentation](https://docs.docker.com/)
