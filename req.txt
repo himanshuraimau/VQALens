@@ -5,3 +5,4 @@ torch
 Pillow
 uvicorn[standard]
 python-multipart
+fastapi-cors

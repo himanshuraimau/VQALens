@@ -32,7 +32,7 @@ async function askQuestion() {
     formData.append('text', questionInput.value.trim());
 
     try {
-        const response = await fetch('http://localhost:8000/ask', {
+        const response = await fetch('/ask', {
             method: 'POST',
             body: formData
         });
