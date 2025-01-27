@@ -1,0 +1,7 @@
+transformers
+ipykernel
+fastapi
+torch
+Pillow
+uvicorn[standard]
+python-multipart

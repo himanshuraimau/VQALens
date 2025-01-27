@@ -1,0 +1,4 @@
+fast
+__pycache__/
+*.pyc
+.vscode/
