@@ -29,10 +29,10 @@ pip install -r req.txt
 
 2. Start the server:
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8080
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at http://localhost:8080
+The API will be available at http://localhost:8000
 
 ### Using Docker
 
@@ -41,12 +41,12 @@ The API will be available at http://localhost:8080
 docker compose up --build
 ```
 
-The API will be available at http://localhost:8080
+The API will be available at http://localhost:8000
 
 ## API Usage
 
 ### Web Interface
-Visit http://localhost:8080 to use the web interface.
+Visit http://localhost:8 to use the web interface.
 
 ### API Endpoints
 Send a POST request to `/ask` endpoint with:
@@ -55,7 +55,7 @@ Send a POST request to `/ask` endpoint with:
 
 Example using curl:
 ```bash
-curl -X POST http://localhost:8080/ask \
+curl -X POST http://localhost:8000/ask \
   -F "image=@path/to/image.jpg" \
   -F "text=What color is the sky?"
 ```
@@ -81,12 +81,12 @@ docker build --platform=linux/amd64 -t vqalens .
 
 2. Run the container:
 ```bash
-docker run -p 8080:8080 vqalens
+docker run -p 8000:8000 vqalens
 ```
 
 ## Environment Variables
 
-- `PORT`: Server port (default: 8080)
+- `PORT`: Server port (default: 8000)
 
 ## References
 

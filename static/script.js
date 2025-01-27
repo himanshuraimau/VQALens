@@ -32,9 +32,12 @@ async function askQuestion() {
     formData.append('text', questionInput.value.trim());
 
     try {
-        const response = await fetch('/ask', {
+        const response = await fetch('http://localhost:8000/ask', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
 
         if (!response.ok) {
@@ -47,3 +50,9 @@ async function askQuestion() {
         errorElement.textContent = `Error: ${error.message}`;
     }
 }
+
+// Add event listener for the form submission
+document.getElementById('askForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    askQuestion();
+});
